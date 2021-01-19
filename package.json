@@ -1,0 +1,22 @@
+{
+  "name": "websocketchat",
+  "version": "1.0.0",
+  "description": "Practice project including websockets, dataparsing, and electron.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start"
+  },
+  "keywords": [
+    "websocket",
+    "data",
+    "electron",
+    "nodejs"
+  ],
+  "author": "amoore",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^11.2.0",
+    "ws": "^7.4.2"
+  }
+}

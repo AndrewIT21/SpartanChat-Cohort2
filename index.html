@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>websocket chat practice</title>
+    <script defer type="text/javascript">
+      var ws = new WebSocket("ws://172.21.3.10:81");
+
+      ws.onopen = function() {
+        console.log("Connection Established");
+      }
+
+      ws.onmessage = function(msg) {
+        console.log("Logged Message: " + msg.data);
+
+        addMessage(msg.data, "Sent");
+      }
+
+      //send message function
+      function sendMessage() {
+        var msg = document.getElementById("currentMessage").value;
+
+        //send it
+        ws.send(msg);
+
+        //clear current message
+        // document.getElementById("currentMessage").value = "";
+
+        //add message
+        // addMessage(msg, "You");
+      }
+
+      function addMessage(msg, sender) {
+        document.getElementById("messages").innerHTML += sender + ": " + msg + "<br>";
+      }
+
+
+      //enter key listener
+      document.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+    <div id="messages">
+
+    </div>
+
+    <input id="currentMessage" placeholder="Type here">
+
+    <button id="sendMessage" onclick="sendMessage()">Send</button>
+  </body>
+  <style media="screen">
+    #messages {
+      width: 20em;
+      height: 20em;
+      outline: solid 2px black;
+      margin-bottom: 1em;
+    }
+
+    #currentMessage {
+
+    }
+
+    #sendMessage {
+
+    }
+  </style>
+</html>
